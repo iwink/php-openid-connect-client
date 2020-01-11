@@ -11,7 +11,8 @@ class AbstractHttpRequestDispatcherTest extends \PHPUnit_Framework_Testcase
 
     public function setUp()
     {
-        $httpClient = $this->getMock('Zend\Http\Client');
+        $httpClient = $this->getMockBuilder('Zend\Http\Client')
+            ->getMock();
         $this->dispatcher = $this->getMockBuilder('InoOicClient\Oic\AbstractHttpRequestDispatcher')
             ->setConstructorArgs(array(
             $httpClient
@@ -22,7 +23,8 @@ class AbstractHttpRequestDispatcherTest extends \PHPUnit_Framework_Testcase
 
     public function testConstructor()
     {
-        $httpClient = $this->getMock('Zend\Http\Client');
+        $httpClient = $this->getMockBuilder('Zend\Http\Client')
+            ->getMock();
         $options = array(
             'foo' => 'bar'
         );
@@ -53,8 +55,10 @@ class AbstractHttpRequestDispatcherTest extends \PHPUnit_Framework_Testcase
 
     public function testSetHttpClient()
     {
-        $httpClientOne = $this->getMock('Zend\Http\Client');
-        $httpClientTwo = $this->getMock('Zend\Http\Client');
+        $httpClientOne = $this->getMockBuilder('Zend\Http\Client')
+            ->getMock();
+        $httpClientTwo = $this->getMockBuilder('Zend\Http\Client')
+            ->getMock();
         
         $dispatcher = $this->getMockBuilder('InoOicClient\Oic\AbstractHttpRequestDispatcher')
             ->setConstructorArgs(array(
@@ -88,8 +92,10 @@ class AbstractHttpRequestDispatcherTest extends \PHPUnit_Framework_Testcase
     {
         $this->setExpectedException('InoOicClient\Oic\Exception\HttpClientException');
         
-        $httpRequest = $this->getMock('Zend\Http\Request');
-        $httpClient = $this->getMock('Zend\Http\Client');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')
+            ->getMock();
+        $httpClient = $this->getMockBuilder('Zend\Http\Client')
+            ->getMock();
         $httpClient->expects($this->once())
             ->method('send')
             ->with($httpRequest)
@@ -104,9 +110,12 @@ class AbstractHttpRequestDispatcherTest extends \PHPUnit_Framework_Testcase
 
     public function testSendHttpRequest()
     {
-        $httpRequest = $this->getMock('Zend\Http\Request');
-        $httpResponse = $this->getMock('Zend\Http\Response');
-        $httpClient = $this->getMock('Zend\Http\Client');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')
+            ->getMock();
+        $httpResponse = $this->getMockBuilder('Zend\Http\Response')
+            ->getMock();
+        $httpClient = $this->getMockBuilder('Zend\Http\Client')
+            ->getMock();
         $httpClient->expects($this->once())
             ->method('send')
             ->with($httpRequest)
@@ -123,14 +132,16 @@ class AbstractHttpRequestDispatcherTest extends \PHPUnit_Framework_Testcase
      */
     protected function createErrorFactoryMock()
     {
-        $factory = $this->getMock('InoOicClient\Oic\ErrorFactoryInterface');
+        $factory = $this->getMockBuilder('InoOicClient\Oic\ErrorFactoryInterface')
+            ->getMock();
         return $factory;
     }
 
 
     protected function createJsonCoderMock()
     {
-        $coder = $this->getMock('InoOicClient\Json\Coder');
+        $coder = $this->getMockBuilder('InoOicClient\Json\Coder')
+            ->getMock();
         return $coder;
     }
 }

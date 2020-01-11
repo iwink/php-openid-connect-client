@@ -62,7 +62,7 @@ class AbstractFlowTest extends \PHPUnit_Framework_Testcase
     public function testSetAuthorizationDispatcher()
     {
         $flow = $this->createFlow();
-        $dispatcher = $this->getMock('InoOicClient\Oic\Authorization\Dispatcher');
+        $dispatcher = $this->getMockBuilder('InoOicClient\Oic\Authorization\Dispatcher')->getMock();
         $flow->setAuthorizationDispatcher($dispatcher);
         $this->assertSame($dispatcher, $flow->getAuthorizationDispatcher());
     }
@@ -90,7 +90,7 @@ class AbstractFlowTest extends \PHPUnit_Framework_Testcase
     public function testSetTokenDispatcher()
     {
         $flow = $this->createFlow();
-        $dispatcher = $this->getMock('InoOicClient\Oic\Token\Dispatcher');
+        $dispatcher = $this->getMockBuilder('InoOicClient\Oic\Token\Dispatcher')->getMock();
         $flow->setTokenDispatcher($dispatcher);
         $this->assertSame($dispatcher, $flow->getTokenDispatcher());
     }
@@ -110,7 +110,7 @@ class AbstractFlowTest extends \PHPUnit_Framework_Testcase
     public function testSetUserInfoDispatcher()
     {
         $flow = $this->createFlow();
-        $dispatcher = $this->getMock('InoOicClient\Oic\UserInfo\Dispatcher');
+        $dispatcher = $this->getMockBuilder('InoOicClient\Oic\UserInfo\Dispatcher')->getMock();
         $flow->setUserInfoDispatcher($dispatcher);
         $this->assertSame($dispatcher, $flow->getUserInfoDispatcher());
     }
@@ -134,7 +134,7 @@ class AbstractFlowTest extends \PHPUnit_Framework_Testcase
     public function testSetClientInfo()
     {
         $flow = $this->createFlow();
-        $clientInfo = $this->getMock('InoOicClient\Client\ClientInfo');
+        $clientInfo = $this->getMockBuilder('InoOicClient\Client\ClientInfo')->getMock();
         $flow->setClientInfo($clientInfo);
         $this->assertSame($clientInfo, $flow->getClientInfo());
     }
@@ -151,7 +151,7 @@ class AbstractFlowTest extends \PHPUnit_Framework_Testcase
     public function testSetHttpClientFactory()
     {
         $flow = $this->createFlow();
-        $factory = $this->getMock('InoOicClient\Http\ClientFactory');
+        $factory = $this->getMockBuilder('InoOicClient\Http\ClientFactory')->getMock();
         $flow->setHttpClientFactory($factory);
         $this->assertSame($factory, $flow->getHttpClientFactory());
     }
@@ -166,7 +166,7 @@ class AbstractFlowTest extends \PHPUnit_Framework_Testcase
             Basic::OPT_HTTP_CLIENT => $httpOptions
         );
         $httpClient = $this->createHttpClientMock();
-        $factory = $this->getMock('InoOicClient\Http\ClientFactory');
+        $factory = $this->getMockBuilder('InoOicClient\Http\ClientFactory')->getMock();
         $factory->expects($this->once())
             ->method('createHttpClient')
             ->with($httpOptions)
@@ -203,14 +203,14 @@ class AbstractFlowTest extends \PHPUnit_Framework_Testcase
 
     protected function createStateManagerMock()
     {
-        $stateManager = $this->getMock('InoOicClient\Oic\Authorization\State\Manager');
+        $stateManager = $this->getMockBuilder('InoOicClient\Oic\Authorization\State\Manager')->getMock();
         return $stateManager;
     }
 
 
     protected function createHttpClientMock()
     {
-        $httpClient = $this->getMock('Zend\Http\Client');
+        $httpClient = $this->getMockBuilder('Zend\Http\Client')->getMock();
         return $httpClient;
     }
 }

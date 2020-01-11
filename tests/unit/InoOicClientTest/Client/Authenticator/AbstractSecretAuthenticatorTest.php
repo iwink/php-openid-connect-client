@@ -9,7 +9,7 @@ class AbstractSecretAuthenticatorTest extends \PHPUnit_Framework_Testcase
 
     public function testConfigureHttpRequest()
     {
-        $httpRequest = $this->getMock('Zend\Http\Request');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')->getMock();
         $clientId = '123';
         $clientSecret = 'abc';
         

@@ -11,7 +11,8 @@ class RequestTest extends \PHPUnit_Framework_Testcase
 
     public function testSettersAndGetters()
     {
-        $clientInfo = $this->getMock('InoOicClient\Client\ClientInfo');
+        $clientInfo = $this->getMockBuilder('InoOicClient\Client\ClientInfo')
+            ->getMock();
         $grantType = 'authorization_code';
         $code = '1234';
         

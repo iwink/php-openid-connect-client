@@ -171,7 +171,7 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
         $values = array(
             'foo' => 'bar'
         );
-        $response = $this->getMock('InoOicClient\Oic\UserInfo\Response');
+        $response = $this->getMockBuilder('InoOicClient\Oic\UserInfo\Response')->getMock();
         
         $httpResponse = $this->createHttpResponseMock($content);
         $coder = $this->createJsonCoderMock($content, $values);
@@ -190,7 +190,7 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
      */
     protected function createHttpResponseMock($content)
     {
-        $httpResponse = $this->getMock('Zend\Http\Response');
+        $httpResponse = $this->getMockBuilder('Zend\Http\Response')->getMock();
         
         if ($content) {
             $httpResponse->expects($this->once())
@@ -207,7 +207,7 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
 
     protected function createResponseFactoryMock($responseData = null, $response = null, $throwException = false)
     {
-        $factory = $this->getMock('InoOicClient\Oic\UserInfo\ResponseFactoryInterface');
+        $factory = $this->getMockBuilder('InoOicClient\Oic\UserInfo\ResponseFactoryInterface')->getMock();
         
         if ($throwException) {
             $factory->expects($this->once())
@@ -227,7 +227,7 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
 
     protected function createJsonCoderMock($input = null, $output = null, $throwsException = false)
     {
-        $coder = $this->getMock('InoOicClient\Json\Coder');
+        $coder = $this->getMockBuilder('InoOicClient\Json\Coder')->getMock();
         
         if ($throwsException) {
             $coder->expects($this->once())
@@ -247,7 +247,7 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
 
     protected function createErrorFactoryMock()
     {
-        $factory = $this->getMock('InoOicClient\Oic\ErrorFactoryInterface');
+        $factory = $this->getMockBuilder('InoOicClient\Oic\ErrorFactoryInterface')->getMock();
         return $factory;
     }
 }

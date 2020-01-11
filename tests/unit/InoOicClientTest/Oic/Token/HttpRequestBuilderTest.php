@@ -87,14 +87,16 @@ class HttpRequestBuilderTest extends \PHPUnit_Framework_Testcase
      */
     protected function createAuthenticatorMock()
     {
-        $authenticator = $this->getMock('InoOicClient\Client\Authenticator\AuthenticatorInterface');
+        $authenticator = $this->getMockBuilder('InoOicClient\Client\Authenticator\AuthenticatorInterface')
+            ->getMock();
         return $authenticator;
     }
 
 
     protected function createClientAuthenticatorFactoryMock()
     {
-        $factory = $this->getMock('InoOicClient\Client\Authenticator\AuthenticatorFactoryInterface');
+        $factory = $this->getMockBuilder('InoOicClient\Client\Authenticator\AuthenticatorFactoryInterface')
+            ->getMock();
         return $factory;
     }
 
@@ -168,7 +170,8 @@ class HttpRequestBuilderTest extends \PHPUnit_Framework_Testcase
     protected function createHttpRequestMock($endpoint, $clientId, $redirectUri, $clientInfo, $code, $grantType, $method, 
         $headersList)
     {
-        $httpRequest = $this->getMock('Zend\Http\Request');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')
+            ->getMock();
         $httpRequest->expects($this->once())
             ->method('setUri')
             ->with($endpoint);
@@ -183,7 +186,8 @@ class HttpRequestBuilderTest extends \PHPUnit_Framework_Testcase
             Param::CODE => $code
         );
         
-        $postVars = $this->getMock('Zend\Stdlib\Parameters');
+        $postVars = $this->getMockBuilder('Zend\Stdlib\Parameters')
+            ->getMock();
         $postVars->expects($this->once())
             ->method('fromArray')
             ->with($postData);
@@ -192,7 +196,8 @@ class HttpRequestBuilderTest extends \PHPUnit_Framework_Testcase
             ->method('getPost')
             ->will($this->returnValue($postVars));
         
-        $headers = $this->getMock('Zend\Http\Headers');
+        $headers = $this->getMockBuilder('Zend\Http\Headers')
+            ->getMock();
         $headers->expects($this->once())
             ->method('addHeaders')
             ->with($headersList);

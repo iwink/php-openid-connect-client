@@ -36,7 +36,7 @@ class BasicTest extends \PHPUnit_Framework_Testcase
             ->with($scope, $responseType)
             ->will($this->returnValue($request));
         
-        $dispatcher = $this->getMock('InoOicClient\Oic\Authorization\Dispatcher');
+        $dispatcher = $this->getMockBuilder('InoOicClient\Oic\Authorization\Dispatcher')->getMock();
         $dispatcher->expects($this->once())
             ->method('createAuthorizationRequestUri')
             ->with($request)
@@ -59,7 +59,7 @@ class BasicTest extends \PHPUnit_Framework_Testcase
             ->method('getCode')
             ->will($this->returnValue($code));
         
-        $dispatcher = $this->getMock('InoOicClient\Oic\Authorization\Dispatcher');
+        $dispatcher = $this->getMockBuilder('InoOicClient\Oic\Authorization\Dispatcher')->getMock();
         $dispatcher->expects($this->once())
             ->method('getAuthorizationResponse')
             ->will($this->returnValue($response));
@@ -96,7 +96,8 @@ class BasicTest extends \PHPUnit_Framework_Testcase
             ->method('getAccessToken')
             ->will($this->returnValue($token));
         
-        $dispatcher = $this->getMock('InoOicClient\Oic\Token\Dispatcher');
+        $dispatcher = $this->getMockBuilder('InoOicClient\Oic\Token\Dispatcher')
+            ->getMock();
         $dispatcher->expects($this->once())
             ->method('sendTokenRequest')
             ->with($request)
@@ -137,7 +138,8 @@ class BasicTest extends \PHPUnit_Framework_Testcase
             ->method('getClaims')
             ->will($this->returnValue($claims));
         
-        $dispatcher = $this->getMock('InoOicClient\Oic\UserInfo\Dispatcher');
+        $dispatcher = $this->getMockBuilder('InoOicClient\Oic\UserInfo\Dispatcher')
+            ->getMock();
         $dispatcher->expects($this->once())
             ->method('sendUserInfoRequest')
             ->with($request)
@@ -265,7 +267,8 @@ class BasicTest extends \PHPUnit_Framework_Testcase
         $responseType = array(
             'code'
         );
-        $clientInfo = $this->getMock('InoOicClient\Client\ClientInfo');
+        $clientInfo = $this->getMockBuilder('InoOicClient\Client\ClientInfo')
+            ->getMock();
         $this->flow->setClientInfo($clientInfo);
         
         $request = $this->flow->createAuthorizationRequest($scope, $responseType);
@@ -279,7 +282,8 @@ class BasicTest extends \PHPUnit_Framework_Testcase
     public function testCreateTokenRequest()
     {
         $code = '123';
-        $clientInfo = $this->getMock('InoOicClient\Client\ClientInfo');
+        $clientInfo = $this->getMockBuilder('InoOicClient\Client\ClientInfo')
+            ->getMock();
         $this->flow->setClientInfo($clientInfo);
         
         $request = $this->flow->createTokenRequest($code);
@@ -292,7 +296,8 @@ class BasicTest extends \PHPUnit_Framework_Testcase
     public function testCreateUserInfoRequest()
     {
         $token = 'abc';
-        $clientInfo = $this->getMock('InoOicClient\Client\ClientInfo');
+        $clientInfo = $this->getMockBuilder('InoOicClient\Client\ClientInfo')
+            ->getMock();
         $this->flow->setClientInfo($clientInfo);
         
         $request = $this->flow->createUserInfoRequest($token);

@@ -12,7 +12,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     public function testGettersAndSetters()
     {
         $token = 'abc';
-        $clientInfo = $this->getMock('InoOicClient\Client\ClientInfo');
+        $clientInfo = $this->getMockBuilder('InoOicClient\Client\ClientInfo')
+            ->getMock();
         
         $request = new Request();
         $request->setAccessToken($token);

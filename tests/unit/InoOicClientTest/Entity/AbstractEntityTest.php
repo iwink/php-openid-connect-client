@@ -152,7 +152,7 @@ class AbstractEntityTest extends \PHPUnit_Framework_TestCase
 
     protected function createMapperMock()
     {
-        $mapper = $this->getMock('InoOicClient\Entity\PropertyMapperInterface');
+        $mapper = $this->getMockBuilder('InoOicClient\Entity\PropertyMapperInterface')->getMock();
         
         return $mapper;
     }

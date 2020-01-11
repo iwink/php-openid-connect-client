@@ -99,7 +99,8 @@ class ManagerTest extends \PHPUnit_Framework_TestCase
 
     protected function createStorageMock($saveState = null, $loadState = null)
     {
-        $storage = $this->getMock('InoOicClient\Oic\Authorization\State\Storage\StorageInterface');
+        $storage = $this->getMockBuilder('InoOicClient\Oic\Authorization\State\Storage\StorageInterface')
+            ->getMock();
         if ($saveState) {
             $storage->expects($this->once())
                 ->method('saveState')
@@ -116,7 +117,8 @@ class ManagerTest extends \PHPUnit_Framework_TestCase
 
     protected function createFactoryMock($state = null)
     {
-        $factory = $this->getMock('InoOicClient\Oic\Authorization\State\StateFactoryInterface');
+        $factory = $this->getMockBuilder('InoOicClient\Oic\Authorization\State\StateFactoryInterface')
+            ->getMock();
         if ($state) {
             $factory->expects($this->once())
                 ->method('createState')

@@ -110,7 +110,8 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
         $coder = $this->createJsonCoderMock($content, $data);
         $this->handler->setJsonCoder($coder);
         
-        $response = $this->getMock('InoOicClient\Oic\Token\Response');
+        $response = $this->getMockBuilder('InoOicClient\Oic\Token\Response')
+            ->getMock();
         $responseFactory = $this->createResponseFactoryMock($data, $response);
         $this->handler->setResponseFactory($responseFactory);
         
@@ -124,7 +125,8 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
      */
     protected function createHttpResponseMock($content, $isError = false)
     {
-        $httpResponse = $this->getMock('Zend\Http\Response');
+        $httpResponse = $this->getMockBuilder('Zend\Http\Response')
+            ->getMock();
         
         $httpResponse->expects($this->once())
             ->method('isSuccess')
@@ -142,7 +144,8 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
 
     protected function createJsonCoderMock($input = null, $output = null, $throwsException = false)
     {
-        $coder = $this->getMock('InoOicClient\Json\Coder');
+        $coder = $this->getMockBuilder('InoOicClient\Json\Coder')
+            ->getMock();
         
         if ($throwsException) {
             $coder->expects($this->once())
@@ -162,7 +165,8 @@ class ResponseHandlerTest extends \PHPUnit_Framework_TestCase
 
     protected function createResponseFactoryMock($responseData = null, $response = null, $throwException = false)
     {
-        $factory = $this->getMock('InoOicClient\Oic\Token\ResponseFactoryInterface');
+        $factory = $this->getMockBuilder('InoOicClient\Oic\Token\ResponseFactoryInterface')
+            ->getMock();
         
         if ($throwException) {
             $factory->expects($this->once())

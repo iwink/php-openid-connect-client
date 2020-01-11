@@ -13,7 +13,7 @@ class ClientInfoTest extends \PHPUnit_Framework_TestCase
     {
         $clientId = '123';
         $redirectUri = 'https://client/redirect';
-        $authenticationInfo = $this->getMock('InoOicClient\Client\AuthenticationInfo');
+        $authenticationInfo = $this->getMockBuilder('InoOicClient\Client\AuthenticationInfo')->getMock();
         $name = 'test client';
         $description = 'test client desc';
         $authEndpoint = 'https://server/auth';

@@ -65,21 +65,24 @@ class AbstractResponseHandlerTest extends \PHPUnit_Framework_TestCase
      */
     protected function createErrorMock()
     {
-        $error = $this->getMock('InoOicClient\Oic\Error');
+        $error = $this->getMockBuilder('InoOicClient\Oic\Error')
+            ->getMock();
         return $error;
     }
 
 
     protected function createJsonCoderMock($input = null, $output = null, $throwsException = false)
     {
-        $coder = $this->getMock('InoOicClient\Json\Coder');
+        $coder = $this->getMockBuilder('InoOicClient\Json\Coder')
+            ->getMock();
         return $coder;
     }
 
 
     protected function createErrorFactoryMock()
     {
-        $factory = $this->getMock('InoOicClient\Oic\ErrorFactoryInterface');
+        $factory = $this->getMockBuilder('InoOicClient\Oic\ErrorFactoryInterface')
+            ->getMock();
         return $factory;
     }
 }

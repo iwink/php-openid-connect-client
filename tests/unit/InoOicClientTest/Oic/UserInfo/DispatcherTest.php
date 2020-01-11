@@ -83,7 +83,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
         $httpRequest = $this->createHttpRequestMock();
         $httpResponse = $this->createHttpResponseMock();
         $builder = $this->createHttpRequestBuilderMock($request, $httpRequest);
-        $response = $this->getMock('InoOicClient\Oic\UserInfo\Response');
+        $response = $this->getMockBuilder('InoOicClient\Oic\UserInfo\Response')
+            ->getMock();
         
         $responseHandler = $this->createResponseHandlerMock($httpResponse, $response);
         
@@ -117,7 +118,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     protected function createResponseHandlerMock($httpResponse = null, $response = null, $error = null)
     {
-        $handler = $this->getMock('InoOicClient\Oic\UserInfo\ResponseHandler');
+        $handler = $this->getMockBuilder('InoOicClient\Oic\UserInfo\ResponseHandler')
+            ->getMock();
         
         if ($httpResponse) {
             $handler->expects($this->once())
@@ -146,7 +148,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     protected function createHttpClientMock($httpRequest = null, $httpRespone = null, $throwException = false)
     {
-        $client = $this->getMock('Zend\Http\Client');
+        $client = $this->getMockBuilder('Zend\Http\Client')
+            ->getMock();
         
         return $client;
     }
@@ -154,28 +157,32 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     protected function createHttpRequestMock()
     {
-        $httpRequest = $this->getMock('Zend\Http\Request');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')
+            ->getMock();
         return $httpRequest;
     }
 
 
     protected function createHttpResponseMock()
     {
-        $httpResponse = $this->getMock('Zend\Http\Response');
+        $httpResponse = $this->getMockBuilder('Zend\Http\Response')
+            ->getMock();
         return $httpResponse;
     }
 
 
     protected function createUserInfoRequestMock()
     {
-        $request = $this->getMock('InoOicClient\Oic\UserInfo\Request');
+        $request = $this->getMockBuilder('InoOicClient\Oic\UserInfo\Request')
+            ->getMock();
         return $request;
     }
 
 
     protected function createHttpRequestBuilderMock($request = null, $httpRequest = null, $throwException = false)
     {
-        $builder = $this->getMock('InoOicClient\Oic\UserInfo\HttpRequestBuilder');
+        $builder = $this->getMockBuilder('InoOicClient\Oic\UserInfo\HttpRequestBuilder')
+            ->getMock();
         
         if ($throwException) {
             $builder->expects($this->once())
@@ -195,7 +202,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function createErrorMock()
     {
-        $error = $this->getMock('InoOicClient\Oic\Error');
+        $error = $this->getMockBuilder('InoOicClient\Oic\Error')
+            ->getMock();
         return $error;
     }
 }

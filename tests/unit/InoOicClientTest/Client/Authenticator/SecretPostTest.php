@@ -21,7 +21,7 @@ class SecretPostTest extends \PHPUnit_Framework_Testcase
          * of either Iterator or IteratorAggregate in Unknown on line 0
          */
         //$postParams = $this->getMock('Zend\Stdlib\ParametersInterface');
-        $postParams = $this->getMock('Zend\Stdlib\Parameters');
+        $postParams = $this->getMockBuilder('Zend\Stdlib\Parameters')->getMock();
         
         $postParams->expects($this->at(0))
             ->method('set')
@@ -30,7 +30,7 @@ class SecretPostTest extends \PHPUnit_Framework_Testcase
             ->method('set')
             ->with(Param::CLIENT_SECRET, $clientSecret);
         
-        $httpRequest = $this->getMock('Zend\Http\Request');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')->getMock();
         $httpRequest->expects($this->once())
             ->method('getPost')
             ->will($this->returnValue($postParams));

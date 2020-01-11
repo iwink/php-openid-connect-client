@@ -28,12 +28,12 @@ class SecretBasicTest extends \PHPUnit_Framework_Testcase
             ->with($clientId, $secret)
             ->will($this->returnValue($authString));
         
-        $headers = $this->getMock('Zend\Http\Headers');
+        $headers = $this->getMockBuilder('Zend\Http\Headers')->getMock();
         $headers->expects($this->once())
             ->method('addHeaderLine')
             ->with('Authorization', $authHeaderValue);
         
-        $httpRequest = $this->getMock('Zend\Http\Request');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')->getMock();
         $httpRequest->expects($this->once())
             ->method('getHeaders')
             ->will($this->returnValue($headers));

@@ -235,7 +235,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     protected function createUriGeneratorMock($request = null, $uri = null)
     {
-        $uriGenerator = $this->getMock('InoOicClient\Oic\Authorization\Uri\Generator');
+        $uriGenerator = $this->getMockBuilder('InoOicClient\Oic\Authorization\Uri\Generator')
+            ->getMock();
         if ($request && $uri) {
             $uriGenerator->expects(($this->once()))
                 ->method('createAuthorizationRequestUri')
@@ -248,7 +249,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     protected function createStateManagerMock($validateHash = null, $throwException = false)
     {
-        $manager = $this->getMock('InoOicClient\Oic\Authorization\State\Manager');
+        $manager = $this->getMockBuilder('InoOicClient\Oic\Authorization\State\Manager')
+            ->getMock();
         if ($validateHash) {
             if ($throwException) {
                 $manager->expects($this->once())
@@ -286,7 +288,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     protected function createResponseFactoryMock($code = null, $response = null, $state = null)
     {
-        $responseFactory = $this->getMock('InoOicClient\Oic\Authorization\ResponseFactoryInterface');
+        $responseFactory = $this->getMockBuilder('InoOicClient\Oic\Authorization\ResponseFactoryInterface')
+            ->getMock();
         if ($code && $response) {
             $responseFactory->expects($this->once())
                 ->method('createResponse')
@@ -299,7 +302,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     protected function createHttpRequestMock($queryParams = array())
     {
-        $httpRequest = $this->getMock('Zend\Http\Request');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')
+            ->getMock();
         $httpRequest->expects($this->once())
             ->method('getQuery')
             ->will($this->returnValue(new Parameters($queryParams)));
@@ -309,7 +313,8 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     protected function createResponseMock()
     {
-        $response = $this->getMock('InoOicClient\Oic\Authorization\Response');
+        $response = $this->getMockBuilder('InoOicClient\Oic\Authorization\Response')
+            ->getMock();
         return $response;
     }
 }

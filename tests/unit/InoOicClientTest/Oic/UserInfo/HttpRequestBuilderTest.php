@@ -38,7 +38,8 @@ class HttpRequestBuilderTest extends \PHPUnit_Framework_TestCase
             $headerName => $headerValue
         );
         
-        $headers = $this->getMock('Zend\Http\Headers');
+        $headers = $this->getMockBuilder('Zend\Http\Headers')
+            ->getMock();
         $headers->expects($this->once())
             ->method('addHeaders')
             ->with($headersList);
@@ -57,7 +58,8 @@ class HttpRequestBuilderTest extends \PHPUnit_Framework_TestCase
      */
     protected function createHttpRequest($method = null, $headers = null, $endpoint = null)
     {
-        $httpRequest = $this->getMock('Zend\Http\Request');
+        $httpRequest = $this->getMockBuilder('Zend\Http\Request')
+            ->getMock();
         
         if ($method) {
             $httpRequest->expects($this->once())

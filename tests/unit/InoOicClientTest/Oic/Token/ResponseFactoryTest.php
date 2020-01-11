@@ -110,7 +110,8 @@ class ResponseFactoryTest extends \PHPUnit_Framework_Testcase
 
     protected function createHttpResponseMock($content = null)
     {
-        $httpResponse = $this->getMock('Zend\Http\Response');
+        $httpResponse = $this->getMockBuilder('Zend\Http\Response')
+            ->getMock();
         $httpResponse->expects($this->once())
             ->method('getContent')
             ->will($this->returnValue($content));
@@ -121,7 +122,8 @@ class ResponseFactoryTest extends \PHPUnit_Framework_Testcase
 
     protected function createResponseMock()
     {
-        $response = $this->getMock('InoOicClient\Oic\Token\Response');
+        $response = $this->getMockBuilder('InoOicClient\Oic\Token\Response')
+            ->getMock();
         return $response;
     }
 }
