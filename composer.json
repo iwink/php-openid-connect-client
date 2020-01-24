@@ -1,9 +1,9 @@
 {
-    "name" : "ivan-novakov/php-openid-connect-client",
+    "name" : "iwink/php-openid-connect-client",
 	"description" : "OAuth2/OpenID Connect client library",
 	"type": "library",
 	"license": "BSD-3-Clause",
-	"homepage": "https://github.com/bradjonesllc/php-openid-connect-client",
+	"homepage": "https://github.com/iwink/php-openid-connect-client",
 
 	"keywords": [
 		"oauth2",
