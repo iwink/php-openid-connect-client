@@ -2,12 +2,12 @@
 
 namespace InoOicClient\Oic;
 
-use Zend\Stdlib\ArrayUtils;
+use Laminas\Stdlib\ArrayUtils;
 
-use Zend\Stdlib\Parameters;
+use Laminas\Stdlib\Parameters;
 use InoOicClient\Json\Coder;
 use InoOicClient\Oic\Exception\HttpClientException;
-use Zend\Http;
+use Laminas\Http;
 
 
 /**
@@ -139,6 +139,7 @@ abstract class AbstractHttpRequestDispatcher
     public function sendHttpRequest(Http\Request $httpRequest)
     {
         $this->setLastHttpRequest($httpRequest);
+        $this->httpClient->setOptions($this->options->get(self::OPT_HTTP_OPTIONS, array()));
         
         try {
             $httpResponse = $this->httpClient->send($httpRequest);

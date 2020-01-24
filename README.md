@@ -14,7 +14,7 @@ The purpose of the library is to provide tools and building blocks for creating 
 
 ## Compatibility
 
-The library jas been tested successfully with the following identity providers:
+The library has been tested successfully with the following identity providers:
 
 - [Github](http://developer.github.com/v3/oauth/)
 - [Google](https://developers.google.com/accounts/docs/OAuth2Login)
@@ -22,11 +22,7 @@ The library jas been tested successfully with the following identity providers:
 
 ## Requirements
 
-* Zend Framework >= 2.2.1
-
-## Documentation
-
-* [API docs](http://debug.cz/apidoc/php-openid-connect-client/)
+* Zend Framework >= 2.2.1 (resolved in composer.json)
 
 ## Installation
 
@@ -198,6 +194,13 @@ Peform token request:
     $tokenResponse = $tokenDispatcher->sendTokenRequest($tokenRequest);
     printf("Access token: %s<br>", $tokenResponse->getAccessToken());
 
+## Running unit tests
+
+Make sure phpunit has been installed through composer ("require-dev") and from the root directory run:
+```
+$ ./vendor/bin/phpunit -c tests/
+```
+
 ## TODO
 
 - provide user-friendly demos for different providers
@@ -222,8 +225,7 @@ OAuth2:
 
 ## License
 
-- [BSD-3-Clause](http://debug.cz/license/bsd-3-clause)
-
+- BSD 3-Clause
 
 ## Author
 
